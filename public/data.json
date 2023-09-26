@@ -1,0 +1,24 @@
+[{
+    "EntityId": "string",
+    "EntityName": "string",
+    "PermAddress": "string",
+    "CorpAddress": "string",
+    "ContactPerson": "string",
+    "Contact": "string",
+    "IsActive": "string",
+    "AddedBy": 0,
+    "PANNO": "string",
+    "CINNumber": "string"
+  },
+  {
+    "EntityId": "string",
+    "EntityName": "string",
+    "PermAddress": "string",
+    "CorpAddress": "string",
+    "ContactPerson": "string",
+    "Contact": "string",
+    "IsActive": "string",
+    "AddedBy": 0,
+    "PANNO": "string",
+    "CINNumber": "string"
+  }]
