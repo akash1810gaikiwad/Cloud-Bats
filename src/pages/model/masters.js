@@ -1,13 +1,24 @@
-
-
 const CurrencyParams = {
-    id: null,
-    CurrencyName: "",
-    CurrencySymbol: "",
-    Currency_image: "",
-    ShortName: "",
-  };
+  id: null,
+  CurrencyName: "",
+  CurrencySymbol: "",
+  Currency_image: "",
+  ShortName: "",
+};
 
-  export{
-    CurrencyParams
-  }
+const ChannelParams = {
+  ChannelCode: "",
+  ChannelName: "",
+  ShortName: "",
+  Channel_Image: "",
+  ChannelGenre: "",
+  ChannelContentType: "",
+  IsActive: "",
+  AddedBy: "",
+  AddedOn: "",
+  StateCode: "",
+  SACCode: "",
+  GSTN_id: "",
+};
+
+export { CurrencyParams, ChannelParams };
