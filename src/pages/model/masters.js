@@ -1,43 +1,57 @@
-
-
 const CurrencyParams = {
-    id: null,
-    CurrencyName: "",
-    CurrencySymbol: "",
-    Currency_image: "",
-    ShortName: "",
-  };
+  id: null,
+  CurrencyName: "",
+  CurrencySymbol: "",
+  Currency_image: "",
+  ShortName: "",
+};
 
-  const EntityParams = {
-    EntityId: "",
-    EntityName: "",
-    PermAddress: "",
-    CorpAddress: "",
-    ContactPerson: "",
-    Contact: "",
-    IsActive: "",
-    PANNO: "",
-    CINNumber: "",
-  };
+const ChannelParams = {
+  ChannelCode: "",
+  ChannelName: "",
+  ShortName: "",
+  Channel_Image: "",
+  ChannelGenre: "",
+  ChannelContentType: "",
+  IsActive: "",
+  AddedBy: "",
+  AddedOn: "",
+  StateCode: "",
+  SACCode: "",
+  GSTN_id: "",
+};
 
-  const PlaceParams = {
-    PlaceCode: "",
-    PlaceName: "",
-    ShortName: "",
-    PlaceTypeCode: "",
-    ZoneCode: "",
-    IsActive: "",
-    AddedBy: "",
-    AddedOn: "",
-    ModifiedBy: "",
-    ModifiedOn: "",
-    CountryCode: "",
-    StateCode: "",
-  };
+const EntityParams = {
+  EntityId: "",
+  EntityName: "",
+  PermAddress: "",
+  CorpAddress: "",
+  ContactPerson: "",
+  Contact: "",
+  IsActive: "",
+  PANNO: "",
+  CINNumber: "",
+};
 
-  export{
-    CurrencyParams,
-    EntityParams,
-    // PlaceParams
-    PlaceParams
-  }
+const PlaceParams = {
+  PlaceCode: "",
+  PlaceName: "",
+  ShortName: "",
+  PlaceTypeCode: "",
+  ZoneCode: "",
+  IsActive: "",
+  AddedBy: "",
+  AddedOn: "",
+  ModifiedBy: "",
+  ModifiedOn: "",
+  CountryCode: "",
+  StateCode: "",
+};
+
+export {
+  CurrencyParams,
+  EntityParams,
+  // PlaceParams
+  PlaceParams,
+  ChannelParams,
+};
