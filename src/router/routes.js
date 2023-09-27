@@ -10,6 +10,7 @@ import Main from "../pages/main";
 import CurrencyMaster from "../pages/CurrencyMaster";
 import EntityMaster from "../pages/EntityMaster";
 import LocationMaster from "../pages/LocationMaster";
+import PlaceMaster from "../pages/PlaceMaster";
 
 /* ****Auth***** */
 import Login from "../pages/Login";
@@ -39,6 +40,7 @@ const Router = [
       { path: "/currency", element: <CurrencyMaster /> },
       { path: "/entity", element: <EntityMaster /> },
       { path: "/location", element: <LocationMaster /> },
+      { path: "/placemaster", element: <PlaceMaster /> },
 
       { path: "*", element: <Navigate to="/auth/404" /> },
     ],
