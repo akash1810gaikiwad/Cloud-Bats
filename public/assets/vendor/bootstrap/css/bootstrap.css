@@ -2047,6 +2047,11 @@ pre code {
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  border: 0;
+  border: 1px solid #ccc;
+  height: 40px;
+  padding-left: 10px;
+  outline: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -3686,6 +3691,7 @@ input[type="button"].btn-block {
 
 .input-group-prepend {
   margin-right: -1px;
+  width: 300px !important;
 }
 
 .input-group-append {
@@ -3693,6 +3699,7 @@ input[type="button"].btn-block {
 }
 
 .input-group-text {
+  width: 150px !important;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;
@@ -6092,14 +6099,12 @@ a.close.disabled {
 }
 
 .modal-footer {
-  display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   -ms-flex-align: center;
   align-items: center;
   -ms-flex-pack: end;
-  justify-content: flex-end;
   padding: 0.75rem;
   border-top: 1px solid #dee2e6;
   border-bottom-right-radius: calc(0.3rem - 1px);
