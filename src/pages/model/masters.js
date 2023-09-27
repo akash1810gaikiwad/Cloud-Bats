@@ -21,38 +21,37 @@ const ChannelParams = {
   GSTN_id: "",
 };
 
- 
-  const EntityParams = {
-    EntityId: "",
-    EntityName: "",
-    PermAddress: "",
-    CorpAddress: "",
-    ContactPerson: "",
-    Contact: "",
-    IsActive: "",
-    PANNO: "",
-    CINNumber: "",
-  };
+const EntityParams = {
+  EntityId: "",
+  EntityName: "",
+  PermAddress: "",
+  CorpAddress: "",
+  ContactPerson: "",
+  Contact: "",
+  IsActive: "",
+  PANNO: "",
+  CINNumber: "",
+};
 
-  const PlaceParams = {
-    PlaceCode: "",
-    PlaceName: "",
-    ShortName: "",
-    PlaceTypeCode: "",
-    ZoneCode: "",
-    IsActive: "",
-    AddedBy: "",
-    AddedOn: "",
-    ModifiedBy: "",
-    ModifiedOn: "",
-    CountryCode: "",
-    StateCode: "",
-  };
+const PlaceParams = {
+  PlaceCode: "",
+  PlaceName: "",
+  ShortName: "",
+  PlaceTypeCode: "",
+  ZoneCode: "",
+  IsActive: "",
+  AddedBy: "",
+  AddedOn: "",
+  ModifiedBy: "",
+  ModifiedOn: "",
+  CountryCode: "",
+  StateCode: "",
+};
 
-  export{
-    CurrencyParams,
-    EntityParams,
-    // PlaceParams
-    PlaceParams
-  }
- 
+export {
+  CurrencyParams,
+  EntityParams,
+  // PlaceParams
+  PlaceParams,
+  ChannelParams,
+};
