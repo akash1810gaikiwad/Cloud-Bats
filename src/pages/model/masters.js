@@ -38,5 +38,6 @@ const CurrencyParams = {
   export{
     CurrencyParams,
     EntityParams,
+    // PlaceParams
     PlaceParams
   }
