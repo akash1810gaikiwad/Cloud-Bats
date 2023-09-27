@@ -4,7 +4,7 @@ import qs from "qs";
 import Swal from "sweetalert2";
 import { setToken, setLoginCode } from "./redux/authSlice";
 
-const showMessage = (msg = "", type = "", navigate, route) => {
+const  showMessage = (msg = "", type = "", navigate, route) => {
   Swal.fire({
     icon: type,
     title: msg,
@@ -357,4 +357,5 @@ export {
   AddLocation,
   Module,
   SubModule,
+  showMessage
 };

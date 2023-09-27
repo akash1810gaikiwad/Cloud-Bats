@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { AddCurrency, getCurrency } from "../Global";
+import {  showMessage } from "../GlobalFunction ";
+import{CurrencyParams} from "./model/masters"
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
@@ -23,14 +25,8 @@ const CurrencyMaster = () => {
 
   const navigate = useNavigate();
 
-  const defaultParams = {
-    id: null,
-    CurrencyName: "",
-    CurrencySymbol: "",
-    Currency_image: "",
-    ShortName: "",
-  };
-
+  
+  const defaultParams = CurrencyParams
   const [params, setParams] = useState(defaultParams);
 
   const [isAddEventModal, setIsAddEventModal] = useState(false);
@@ -94,6 +90,8 @@ const CurrencyMaster = () => {
     }
 
     showMessage("Event has been saved successfully.");
+
+
     let params2 = JSON.parse(JSON.stringify(defaultParams));
     setParams(params2);
     setIsAddEventModal(false);
@@ -113,20 +111,7 @@ const CurrencyMaster = () => {
     setParams({ ...params, [id]: value });
   };
 
-  const showMessage = (msg = "", type = "success") => {
-    const toast = Swal.mixin({
-      toast: true,
-      position: "top",
-      showConfirmButton: false,
-      timer: 3000,
-      customClass: { container: "toast" },
-    });
-    toast.fire({
-      icon: type,
-      title: msg,
-      padding: "10px 20px",
-    });
-  };
+   
 
   return (
     <div id="main-content">
