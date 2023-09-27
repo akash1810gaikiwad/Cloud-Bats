@@ -19,7 +19,7 @@ const Login = () => {
         <div className="vertical-align-middle auth-main">
             <div className="auth-box">
                 <div className="top">
-                    {/* <img src="assets/images/logo-white.svg" alt="CloudBATS" width="5%" height="10%"/> */}
+                    {/*<img src="assets/images/logo-white.svg" alt="CloudBATS" width="5%" height="10%"/> */}
                         <h6 style={{color: "white",fontSize : 38,fontWeight : 'bold'}} className="header">CloudBATS</h6>
                 </div>
                 <div className="card">
