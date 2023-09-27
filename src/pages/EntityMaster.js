@@ -94,7 +94,7 @@ const defaultParams = EntityParams;
       });
     }
 
-    showMessage("Event has been saved successfully.");
+    //showMessage("Event has been saved successfully.");
     let params2 = JSON.parse(JSON.stringify(defaultParams));
     setParams(params2);
     setIsAddEventModal(false);
