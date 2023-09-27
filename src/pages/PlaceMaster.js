@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { AddEntity, getEntity } from "../Global";
-import { showMessage } from "../GlobalFunction";
-import { EntityParams } from "./model/masters"
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { showMessage } from "../GlobalFunction";
+import { PlaceParams } from "./model/masters";
 
-const EntityMaster = () => {
+const PlaceMaster = () => {
   const [tableData, settableData] = useState([]);
   const token = useSelector((state) => state.token);
   const LoginCode = useSelector((state) => state.LoginCode);
@@ -25,8 +25,8 @@ const EntityMaster = () => {
 
   const navigate = useNavigate();
 
-
-const defaultParams = EntityParams;
+  
+  const defaultParams = PlaceParams;
   const [params, setParams] = useState(defaultParams);
 
   const [isAddEventModal, setIsAddEventModal] = useState(false);
@@ -48,11 +48,18 @@ const defaultParams = EntityParams;
       let obj = JSON.parse(JSON.stringify(data));
 
       setParams({
-        id: obj.CurrencyCode ? obj.CurrencyCode : null,
-        CurrencyName: obj.CurrencyName ? obj.CurrencyName : null,
-        CurrencySymbol: obj.CurrencySymbol ? obj.CurrencySymbol : null,
-        Currency_image: obj.Currency_image ? obj.Currency_image : null,
+        id: obj.PlaceCode ? obj.PlaceCode : null,
+        PlaceName: obj.PlaceName ? obj.PlaceName : null,
         ShortName: obj.ShortName ? obj.ShortName : null,
+        PlaceTypeCode: obj.PlaceTypeCode ? obj.PlaceTypeCode : null,
+        ZoneCode: obj.ZoneCode ? obj.ZoneCode : null,
+        IsActive: obj.IsActive ? obj.IsActive : null,
+        AddedBy: obj.AddedBy ? obj.AddedBy : null,
+        AddedOn: obj.AddedOn ? obj.AddedOn : null,
+        ModifiedBy: obj.ModifiedBy ? obj.ModifiedBy : null,
+        ModifiedOn: obj.ModifiedOn ? obj.ModifiedOn : null,
+        CountryCode: obj.CountryCode ? obj.CountryCode : null,
+        StateCode: obj.StateCode ? obj.StateCode : null,
       });
     }
     addEvent(data);
@@ -62,10 +69,17 @@ const defaultParams = EntityParams;
       //update event
       let dataevent = tableData || [];
       let event = dataevent.find((d) => d.id === parseInt(params.id));
-      event.CurrencyName = params.CurrencyName;
-      event.CurrencySymbol = params.CurrencySymbol;
-      event.Currency_image = params.Currency_image;
+      event.PlaceName = params.PlaceName;
       event.ShortName = params.ShortName;
+      event.PlaceTypeCode = params.PlaceTypeCode;
+      event.ZoneCode = params.ZoneCode;
+      event.IsActive = params.IsActive;
+      event.AddedBy = params.AddedBy;
+      event.AddedOn = params.AddedOn;
+      event.ModifiedBy = params.ModifiedBy;
+      event.ModifiedOn = params.ModifiedOn;
+      event.CountryCode = params.CountryCode;
+      event.StateCode = params.StateCode;
 
       settableData([]);
       setTimeout(() => {
@@ -77,15 +91,18 @@ const defaultParams = EntityParams;
       AddEntity(params, LoginCode, token, navigate);
 
       let event = {
-        EntityId: params.EntityId,
-        EntityName: params.EntityName,
-        PermAddress: params.PermAddress,
-        CorpAddress: params.CorpAddress,
-        ContactPerson: params.ContactPerson,
-        Contact: params.Contact,
+        PlaceCode: params.PlaceCode,
+        ShortName: params.ShortName,
+        PlaceTypeCode: params.PlaceTypeCode,
+        ZoneCode: params.ZoneCode,
         IsActive: params.IsActive,
-        PANNO: params.PANNO,
-        CINNumber: params.CINNumber,
+        AddedBy: params.AddedBy,
+        AddedOn: params.AddedOn,
+        ModifiedBy: params.ModifiedBy,
+        ModifiedOn: params.ModifiedOn,
+        CountryCode: params.CountryCode,
+        StateCode: params.StateCode,
+         
       };
       let dataevent = tableData || [];
       dataevent = dataevent.concat([event]);
@@ -105,6 +122,7 @@ const defaultParams = EntityParams;
     setParams({ ...params, [id]: value });
   };
 
+  
 
   return (
     <div id="main-content">
@@ -112,7 +130,7 @@ const defaultParams = EntityParams;
         <div className="col-lg-12 col-md-12">
           <div className="card">
             <div className="header">
-              <h2>Entity Master </h2>
+              <h2>Place Master</h2>
             </div>
             <div className="body">
               <div class="card">
@@ -123,7 +141,7 @@ const defaultParams = EntityParams;
                     data-target="#information_modal"
                     class="btn btn-primary m-b-15"
                     type="button">
-                    <i class="icon wb-plus" aria-hidden="true"></i> Add Entity
+                    <i class="icon wb-plus" aria-hidden="true"></i> Add Place
                   </a>
                   <div class="table-responsive">
                     <table
@@ -132,14 +150,15 @@ const defaultParams = EntityParams;
                       id="addrowExample">
                       <thead>
                         <tr>
-                          <th>EntityName</th>
-                          <th>PermAddress</th>
-                          <th>ContactPerson</th>
-                          <th>Contact</th>
-                          <th>IsActive</th>
-                          <th>PANNO</th>
-                          <th>CINNumber</th>
-                          <th>Actions</th>
+                        
+                          <th>PlaceType</th>
+                          <th>Country</th>
+                          <th>State</th>
+                          <th>PlaceName</th>
+                          <th>ShortName</th>
+                          <th>ZoneName</th>
+                          <th>Action</th>
+            
                         </tr>
                       </thead>
                       {/* <tfoot>
@@ -158,13 +177,14 @@ const defaultParams = EntityParams;
                         return (
                           <tbody key={index}>
                             <tr class="gradeA">
-                              <td>{data.EntityName}</td>
-                              <td>{data.PermAddress}</td>
-                              <td>{data.ContactPerson}</td>
-                              <td>{data.Contact}</td>
-                              <td>{data.IsActive}</td>
-                              <td>{data.PANNO}</td>
-                              <td>{data.CINNumber}</td>
+                             
+                              <td>{data.PlaceType}</td>
+                              <td>{data.Country}</td>
+                              <td>{data.state}</td>
+                              <td>{data.PlaceName}</td>
+                              <td>{data.ShortName}</td>
+                              <td>{data.ZoneName}</td>
+                          
 
                               <td class="actions">
                                 <button
@@ -205,7 +225,7 @@ const defaultParams = EntityParams;
           <div className="modal-content">
             <div className="modal-header">
               <h4 className="title" id="largeModalLabel">
-                {params.id ? "Edit Currency" : "Add Currency"}
+                {params.id ? "Edit Currency" : "Add Place"}
               </h4>
             </div>
             <div className="modal-body">
@@ -227,95 +247,95 @@ const defaultParams = EntityParams;
                             </div> */}
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                      <span class="input-group-text">Entity Name</span>
+                      <span class="input-group-text">PlaceType</span>
                     </div>
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="Enter Entity Name"
+                      placeholder="Select Place Type"
                       id="EntityName"
                       name="EntityName"
-                      defaultValue={params.EntityName}
+                      defaultValue={params.PlaceTypeCode}
                       onChange={(e) => changeValue(e)}
                       required
                     />
                   </div>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                      <span class="input-group-text">Address</span>
+                      <span class="input-group-text">Country</span>
                     </div>
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="Enter PermAddress"
+                      placeholder="Select Country"
                       id="PermAddress"
                       name="PermAddress"
-                      defaultValue={params.PermAddress}
+                      defaultValue={params.CurrencyCode}
                       onChange={(e) => changeValue(e)}
                       required
                     />
                   </div>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                      <span class="input-group-text">Corp Address</span>
+                      <span class="input-group-text">State</span>
                     </div>
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="Enter CorpAddress"
+                      placeholder="Select State"
                       id="CorpAddress"
                       name="CorpAddress"
-                      defaultValue={params.CorpAddress}
+                      defaultValue={params.StateCode}
                       onChange={(e) => changeValue(e)}
                       required
                     />
                   </div>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                      <span class="input-group-text">Contact Person</span>
+                      <span class="input-group-text">PlaceName</span>
                     </div>
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="Enter ContactPerson"
+                      placeholder="Enter PlaceName"
                       id="ContactPerson"
                       name="ContactPerson"
-                      defaultValue={params.ContactPerson}
+                      defaultValue={params.PlaceName}
                       onChange={(e) => changeValue(e)}
                       required
                     />
                   </div>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                      <span class="input-group-text">Contact</span>
+                      <span class="input-group-text">ShortName</span>
                     </div>
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="Enter Contact"
+                      placeholder="Enter ShortName"
                       id="Contact"
                       name="Contact"
-                      defaultValue={params.Contact}
+                      defaultValue={params.ShortName}
                       onChange={(e) => changeValue(e)}
                       required
                     />
                   </div>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                      <span class="input-group-text">PANNO</span>
+                      <span class="input-group-text">ZoneName</span>
                     </div>
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="Enter PANNO"
+                      placeholder="Enter ZoneName"
                       id="PANNO"
                       name="PANNO"
-                      defaultValue={params.PANNO}
+                      defaultValue={params.ZoneName}
                       onChange={(e) => changeValue(e)}
                       required
                     />
                   </div>
-                  <div class="input-group mb-3">
+                  {/* <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text">CINNumber</span>
                     </div>
@@ -329,7 +349,7 @@ const defaultParams = EntityParams;
                       onChange={(e) => changeValue(e)}
                       required
                     />
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -360,4 +380,4 @@ const defaultParams = EntityParams;
   );
 };
 
-export default EntityMaster;
+export default PlaceMaster;
