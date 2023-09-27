@@ -1,40 +1,48 @@
-import React, { lazy } from 'react';
-import { Navigate } from 'react-router-dom';
+import React, { lazy } from "react";
+import { Navigate } from "react-router-dom";
 
 /* ***Layouts**** */
-const FullLayout = lazy(() => import('../layouts/FullLayout'));
-const BlankLayout = lazy(() => import('../layouts/BlankLayout'));
+import FullLayout from "../layouts/FullLayout";
+import BlankLayout from "../layouts/BlankLayout";
 
 /* ****Pages***** */
-const Main = lazy(() => import('../pages/main'));
-const CurrencyMaster = lazy(() => import('../pages/CurrencyMaster'));
-const LocationMaster = lazy(() => import('../pages/LocationMaster'));
+import Main from "../pages/main";
+import CurrencyMaster from "../pages/CurrencyMaster";
+import EntityMaster from "../pages/EntityMaster";
+import LocationMaster from "../pages/LocationMaster";
 
-const Login = lazy(() => import('../pages/Login'));
+/* ****Auth***** */
+import Login from "../pages/Login";
+
+/* ***Layouts**** */
+// const FullLayout = lazy(() => import("../layouts/FullLayout"));
+
+/* ****Pages***** */
+// const CurrencyMaster = lazy(() => import("../pages/CurrencyMaster"));
 
 const Router = [
   {
-    path: '/',
+    path: "/",
     element: <BlankLayout />,
     children: [
-      { path: '/', element: <Navigate to="/login" /> },
-      { path: '/login', element: <Login /> },
-      { path: '*', element: <Navigate to="/auth/404" /> },
+      { path: "/", element: <Navigate to="/login" /> },
+      { path: "/login", element: <Login /> },
+      { path: "*", element: <Navigate to="/auth/404" /> },
     ],
   },
   {
-    path: '/',
+    path: "/",
     element: <FullLayout />,
     children: [
       //{ path: '/', element: <Navigate to="/dashboard" /> },
-      { path: '/dashboard',  element: <Main /> },
-      { path: '/currency',  element: <CurrencyMaster /> },
-      { path: '/location',  element: <LocationMaster /> },
-      
-      { path: '*', element: <Navigate to="/auth/404" /> },
+      { path: "/dashboard", element: <Main /> },
+      { path: "/currency", element: <CurrencyMaster /> },
+      { path: "/entity", element: <EntityMaster /> },
+      { path: "/location", element: <LocationMaster /> },
+
+      { path: "*", element: <Navigate to="/auth/404" /> },
     ],
   },
-  
 ];
 
 export default Router;
