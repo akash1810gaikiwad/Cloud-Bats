@@ -1,6 +1,5 @@
 import axios from "axios";
 import qs from "qs";
-import fs from "fs";
 
 import Swal from "sweetalert2";
 import { setToken, setLoginCode } from "./redux/authSlice";
@@ -150,12 +149,9 @@ function getCurrency(token) {
   });
 }
 
-function AddCurrency(params, LoginCode, token, navigate) {
-  console.log(params.Currency_image);
+function AddCurrency(params, LoginCode, token, navigate, selectedFileName) {
+  console.log(selectedFileName);
   if (!params.CurrencyName) {
-    return;
-  }
-  if (!params.Currency_image) {
     return;
   }
   if (!params.CurrencySymbol) {
@@ -166,7 +162,7 @@ function AddCurrency(params, LoginCode, token, navigate) {
   }
   let data = JSON.stringify({
     CurrencyName: params.CurrencyName,
-    Currency_image: params.Currency_image,
+    Currency_image: selectedFileName,
     CurrencySymbol: params.CurrencySymbol,
     ShortName: params.ShortName,
     AddedBy: LoginCode,
@@ -196,33 +192,19 @@ function AddCurrency(params, LoginCode, token, navigate) {
     .catch((error) => {
       console.log(error);
     });
+  var formdata = new FormData();
+  formdata.append("file", params.Currency_image, "params.Currency_image");
 
-  let data2 = new FormData();
-  data2.append(
-    "file",
-    fs.createReadStream(
-      "/C:/Users/admin/Pictures/Screenshots/Screenshot (20).png"
-    )
-  );
-
-  let config2 = {
-    method: "post",
-    maxBodyLength: Infinity,
-    url: "http://localhost:3000/upload",
-    headers: {
-      ...data.getHeaders(),
-    },
-    data2: data2,
+  var requestOptions = {
+    method: "POST",
+    body: formdata,
+    redirect: "follow",
   };
 
-  axios
-    .request(config2)
-    .then((response) => {
-      console.log(JSON.stringify(response.data));
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  fetch("http://localhost:3000/upload", requestOptions)
+    .then((response) => response.text())
+    .then((result) => console.log(result))
+    .catch((error) => console.log("error", error));
 }
 
 function getEntity(token) {

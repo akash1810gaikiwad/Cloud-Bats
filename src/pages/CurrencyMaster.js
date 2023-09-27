@@ -78,7 +78,7 @@ const CurrencyMaster = () => {
     } else {
       //add event
 
-      AddCurrency(params, LoginCode, token, navigate);
+      AddCurrency(params, LoginCode, token, navigate, selectedFileName);
 
       let event = {
         CurrencyName: params.CurrencyName,
@@ -97,6 +97,15 @@ const CurrencyMaster = () => {
     let params2 = JSON.parse(JSON.stringify(defaultParams));
     setParams(params2);
     setIsAddEventModal(false);
+  };
+
+  const [selectedFileName, setSelectedFileName] = useState("");
+
+  const handleFileChange = (event) => {
+    if (event.target.files.length > 0) {
+      const fileName = event.target.files[0].name;
+      setSelectedFileName(fileName);
+    }
   };
   const changeValue = (e) => {
     const { value, id } = e.target;
@@ -166,6 +175,15 @@ const CurrencyMaster = () => {
                               <td>{data.CurrencyName}</td>
                               <td>{data.CurrencySymbol}</td>
                               <td>{data.Currency_image}</td>
+                              <td>
+                                <img
+                                  src={
+                                    "assets/upload/" + data.Currency_image + ""
+                                  }
+                                  class="rounded-circle avatar"
+                                  alt=""
+                                />
+                              </td>
                               <td class="actions">
                                 <button
                                   type="button"
@@ -249,7 +267,7 @@ const CurrencyMaster = () => {
                             id="Currency_image"
                             name="Currency_image"
                             defaultValue={params.Currency_image}
-                            onChange={(e) => changeValue(e)}
+                            onChange={handleFileChange}
                             required
                           />
                           <span class="label">Currency Image</span>
