@@ -14,11 +14,17 @@ import LocationMaster from "../pages/LocationMaster";
 import ChannelMaster from "../pages/ChannelMaster";
  
 import PlaceMaster from "../pages/PlaceMaster";
+
  
 
 /* ****Auth***** */
 import Login from "../pages/Login";
+
+import ZoneMaster from "../pages/ZoneMaster";
+import DepartmentMaster from "../pages/DepartmentMaster";
+
 import RegionMaster from "../pages/views/AdminView/RegionMaster";
+
 
 /* ***Layouts**** */
 // const FullLayout = lazy(() => import("../layouts/FullLayout"));
@@ -47,7 +53,12 @@ const Router = [
       { path: "/entity", element: <EntityMaster /> },
       { path: "/location", element: <LocationMaster /> },
       { path: "/placemaster", element: <PlaceMaster /> },
+
+      { path: "/zonemaster", element: <ZoneMaster /> },
+      { path: "/departmentmaster", element: <DepartmentMaster /> },
+
       { path: "/Regionmaster", element: <RegionMaster /> },
+
 
       { path: "*", element: <Navigate to="/auth/404" /> },
     ],
