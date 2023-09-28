@@ -38,7 +38,6 @@ const PlaceParams = {
   PlaceCode: "",
   PlaceName: "",
   ShortName: "",
-  PlaceTypeCode: "",
   ZoneCode: "",
   IsActive: "",
   AddedBy: "",
@@ -52,11 +51,37 @@ const PlaceParams = {
 const DesignationParams = {
   DesignationCode: "",
   DesignationName: "",
+  
+const ZoneParams = {
+  ZoneCode: "",
+  ZoneName: "",
   ShortName: "",
   IsActive: "",
   AddedBy: "",
   AddedOn: "",
 };
+
+const DepartmentParams = {
+  DepartmentCode: "",
+  DepartmentName: "",
+  ShortName: "",
+  IsActive: "",
+  AddedBy: "",
+  AddedOn: "",
+};
+
+
+const RegionParams = {
+  RegionCode: "",
+  RegionName: "",
+  ShortName: "",
+  ZoneCode: "",
+  IsActive: "",
+  AddedBy: "",
+  AddedOn: "",
+   
+};
+
 
 export {
   CurrencyParams,
@@ -65,4 +90,10 @@ export {
   PlaceParams,
   ChannelParams,
   DesignationParams,
+  ZoneParams,
+  DepartmentParams,
+
+  RegionParams
+
 };
+
