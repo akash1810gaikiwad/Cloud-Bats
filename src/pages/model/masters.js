@@ -51,7 +51,12 @@ const PlaceParams = {
 const DesignationParams = {
   DesignationCode: "",
   DesignationName: "",
-  
+  ShortName: "",
+  IsActive: "",
+  AddedBy: "",
+  AddedOn: "",
+};
+
 const ZoneParams = {
   ZoneCode: "",
   ZoneName: "",
@@ -70,7 +75,6 @@ const DepartmentParams = {
   AddedOn: "",
 };
 
-
 const RegionParams = {
   RegionCode: "",
   RegionName: "",
@@ -79,9 +83,7 @@ const RegionParams = {
   IsActive: "",
   AddedBy: "",
   AddedOn: "",
-   
 };
-
 
 export {
   CurrencyParams,
@@ -92,8 +94,5 @@ export {
   DesignationParams,
   ZoneParams,
   DepartmentParams,
-
-  RegionParams
-
+  RegionParams,
 };
-
