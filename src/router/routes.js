@@ -18,6 +18,7 @@ import PlaceMaster from "../pages/PlaceMaster";
 
 /* ****Auth***** */
 import Login from "../pages/Login";
+import RegionMaster from "../pages/views/AdminView/RegionMaster";
 
 /* ***Layouts**** */
 // const FullLayout = lazy(() => import("../layouts/FullLayout"));
@@ -46,6 +47,7 @@ const Router = [
       { path: "/entity", element: <EntityMaster /> },
       { path: "/location", element: <LocationMaster /> },
       { path: "/placemaster", element: <PlaceMaster /> },
+      { path: "/Regionmaster", element: <RegionMaster /> },
 
       { path: "*", element: <Navigate to="/auth/404" /> },
     ],

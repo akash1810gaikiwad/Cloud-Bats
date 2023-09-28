@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { AddCurrency, getCurrency } from "../Global";
 import {  showMessage } from "../GlobalFunction";
-import{CurrencyParams} from "./model/masters"
+import{ CurrencyParams } from "./model/masters"
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
