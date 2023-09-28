@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { AddEntity, getEntity } from "../Global";
-import { showMessage } from "../GlobalFunction";
-import { EntityParams } from "./model/masters"
+import { AddCurrency, getCurrency } from "../../../Global";
+import {  showMessage } from "../../../GlobalFunction";
+import{ CurrencyParams } from "../../model/masters"
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
-const EntityMaster = () => {
+const CurrencyMaster = () => {
   const [tableData, settableData] = useState([]);
   const token = useSelector((state) => state.token);
   const LoginCode = useSelector((state) => state.LoginCode);
   useEffect(() => {
-    getEntity(token)
+    getCurrency(token)
       .then((data) => {
         console.log("Data from API:", data);
         settableData(data);
@@ -25,8 +25,8 @@ const EntityMaster = () => {
 
   const navigate = useNavigate();
 
-
-const defaultParams = EntityParams;
+  
+  const defaultParams = CurrencyParams
   const [params, setParams] = useState(defaultParams);
 
   const [isAddEventModal, setIsAddEventModal] = useState(false);
@@ -74,18 +74,13 @@ const defaultParams = EntityParams;
     } else {
       //add event
 
-      AddEntity(params, LoginCode, token, navigate);
+      AddCurrency(params, LoginCode, token, navigate, selectedFileName);
 
       let event = {
-        EntityId: params.EntityId,
-        EntityName: params.EntityName,
-        PermAddress: params.PermAddress,
-        CorpAddress: params.CorpAddress,
-        ContactPerson: params.ContactPerson,
-        Contact: params.Contact,
-        IsActive: params.IsActive,
-        PANNO: params.PANNO,
-        CINNumber: params.CINNumber,
+        CurrencyName: params.CurrencyName,
+        CurrencySymbol: params.CurrencySymbol,
+        Currency_image: params.Currency_image,
+        ShortName: params.ShortName,
       };
       let dataevent = tableData || [];
       dataevent = dataevent.concat([event]);
@@ -94,10 +89,21 @@ const defaultParams = EntityParams;
       });
     }
 
-    //showMessage("Event has been saved successfully.");
+    showMessage("Event has been saved successfully.");
+
+
     let params2 = JSON.parse(JSON.stringify(defaultParams));
     setParams(params2);
     setIsAddEventModal(false);
+  };
+
+  const [selectedFileName, setSelectedFileName] = useState("");
+
+  const handleFileChange = (event) => {
+    if (event.target.files.length > 0) {
+      const fileName = event.target.files[0].name;
+      setSelectedFileName(fileName);
+    }
   };
   const changeValue = (e) => {
     const { value, id } = e.target;
@@ -105,6 +111,7 @@ const defaultParams = EntityParams;
     setParams({ ...params, [id]: value });
   };
 
+   
 
   return (
     <div id="main-content">
@@ -112,7 +119,7 @@ const defaultParams = EntityParams;
         <div className="col-lg-12 col-md-12">
           <div className="card">
             <div className="header">
-              <h2>Entity Master </h2>
+              <h2>Currency Master </h2>
             </div>
             <div className="body">
               <div class="card">
@@ -123,49 +130,45 @@ const defaultParams = EntityParams;
                     data-target="#information_modal"
                     class="btn btn-primary m-b-15"
                     type="button">
-                    <i class="icon wb-plus" aria-hidden="true"></i> Add Entity
+                    <i class="icon wb-plus" aria-hidden="true"></i> Add Currency
                   </a>
-                  <div class="table-responsive m-t-20">
+                  <div class="table-responsive">
                     <table
-                      class="table table-filter table-bordered table-hover table-striped"
+                      class="table table-bordered table-hover table-striped"
                       cellspacing="0"
                       id="addrowExample">
                       <thead>
                         <tr>
-                          <th>EntityName</th>
-                          <th>PermAddress</th>
-                          <th>ContactPerson</th>
-                          <th>Contact</th>
-                          <th>IsActive</th>
-                          <th>PANNO</th>
-                          <th>CINNumber</th>
+                          <th>Currency Name</th>
+                          <th>Currency Symbol</th>
+                          <th>Currency image</th>
                           <th>Actions</th>
                         </tr>
                       </thead>
-                      {/* <tfoot>
-                                    <tr>
-                                    <th>EntityName</th>
-                                        <th>PermAddress</th>
-                                        <th>ContactPerson</th>
-                                        <th>Contact</th>
-                                        <th>IsActive</th>
-                                        <th>PANNO</th>
-                                        <th>CINNumber</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </tfoot> */}
+                      <tfoot>
+                        <tr>
+                          <th>Currency Name</th>
+                          <th>Currency Symbol</th>
+                          <th>Currency image</th>
+                          <th>Actions</th>
+                        </tr>
+                      </tfoot>
                       {tableData.map((data, index) => {
                         return (
                           <tbody key={index}>
-                            <tr>
-                              <td>{data.EntityName}</td>
-                              <td>{data.PermAddress}</td>
-                              <td>{data.ContactPerson}</td>
-                              <td>{data.Contact}</td>
-                              <td>{data.IsActive}</td>
-                              <td>{data.PANNO}</td>
-                              <td>{data.CINNumber}</td>
-
+                            <tr class="gradeA">
+                              <td>{data.CurrencyName}</td>
+                              <td>{data.CurrencySymbol}</td>
+                              <td>{data.Currency_image}</td>
+                              <td>
+                                <img
+                                  src={
+                                    "assets/upload/" + data.Currency_image + ""
+                                  }
+                                  class="rounded-circle avatar"
+                                  alt=""
+                                />
+                              </td>
                               <td class="actions">
                                 <button
                                   type="button"
@@ -210,130 +213,140 @@ const defaultParams = EntityParams;
             </div>
             <div className="modal-body">
               <div class="card">
+                <section>
+                  <div class="inner" style={{ padding: "5px" }}>
+                    <div class="form-row">
+                      <div class="form-holder">
+                        <label class="form-row-inner">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="CurrencyName"
+                            name="CurrencyName"
+                            defaultValue={params.CurrencyName}
+                            onChange={(e) => changeValue(e)}
+                            required
+                          />
+                          <span class="label">Currency Name</span>
+                        </label>
+                      </div>
+                      <div class="form-holder">
+                        <label class="form-row-inner">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="CurrencySymbol"
+                            name="CurrencySymbol"
+                            defaultValue={params.CurrencySymbol}
+                            onChange={(e) => changeValue(e)}
+                            required
+                          />
+                          <span class="label">Currency Symbol</span>
+                        </label>
+                      </div>
+                      <div class="form-holder">
+                        <label class="form-row-inner">
+                          <input
+                            type="file"
+                            class="form-control"
+                            id="Currency_image"
+                            name="Currency_image"
+                            defaultValue={params.Currency_image}
+                            onChange={handleFileChange}
+                            required
+                          />
+                          <span class="label">Currency Image</span>
+                        </label>
+                      </div>
+                      <div class="form-holder">
+                        <label class="form-row-inner">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="ShortName"
+                            name="ShortName"
+                            defaultValue={params.ShortName}
+                            onChange={(e) => changeValue(e)}
+                            required
+                          />
+                          <span class="label">Short Code</span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+            {/* <div className="modal-body">
+              <div class="card">
                 <div class="body">
-                  {/* <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Entity Id</span>
-                                </div>
-                                <input type="text"
-                                class="form-control"
-                                placeholder="Enter Entity Id"
-                                id="EntityId"
-                                name="EntityId"
-                                defaultValue={params.EntityId}
-                                onChange={(e) => changeValue(e)}
-                                required
-                                 />
-                            </div> */}
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                      <span class="input-group-text">Entity Name</span>
+                      <span class="input-group-text">@</span>
                     </div>
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="Enter Entity Name"
-                      id="EntityName"
-                      name="EntityName"
-                      defaultValue={params.EntityName}
+                      placeholder="Enter CurrencyName"
+                      id="CurrencyName"
+                      name="CurrencyName"
+                      defaultValue={params.CurrencyName}
+                      onChange={(e) => changeValue(e)}
+                      required
+                    />
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">$</span>
+                    </div>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Enter Currency Symbol"
+                      id="CurrencySymbol"
+                      name="CurrencySymbol"
+                      defaultValue={params.CurrencySymbol}
                       onChange={(e) => changeValue(e)}
                       required
                     />
                   </div>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                      <span class="input-group-text">Address</span>
+                      <span class="input-group-text">$</span>
                     </div>
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="Enter PermAddress"
-                      id="PermAddress"
-                      name="PermAddress"
-                      defaultValue={params.PermAddress}
+                      placeholder="Enter Currency image"
+                      id="Currency_image"
+                      name="Currency_image"
+                      defaultValue={params.Currency_image}
                       onChange={(e) => changeValue(e)}
                       required
                     />
                   </div>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                      <span class="input-group-text">Corp Address</span>
+                      <span class="input-group-text">Short Code</span>
                     </div>
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="Enter CorpAddress"
-                      id="CorpAddress"
-                      name="CorpAddress"
-                      defaultValue={params.CorpAddress}
-                      onChange={(e) => changeValue(e)}
-                      required
-                    />
-                  </div>
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Contact Person</span>
-                    </div>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Enter ContactPerson"
-                      id="ContactPerson"
-                      name="ContactPerson"
-                      defaultValue={params.ContactPerson}
-                      onChange={(e) => changeValue(e)}
-                      required
-                    />
-                  </div>
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Contact</span>
-                    </div>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Enter Contact"
-                      id="Contact"
-                      name="Contact"
-                      defaultValue={params.Contact}
-                      onChange={(e) => changeValue(e)}
-                      required
-                    />
-                  </div>
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">PANNO</span>
-                    </div>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Enter PANNO"
-                      id="PANNO"
-                      name="PANNO"
-                      defaultValue={params.PANNO}
-                      onChange={(e) => changeValue(e)}
-                      required
-                    />
-                  </div>
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">CINNumber</span>
-                    </div>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Enter CINNumber"
-                      id="CINNumber"
-                      name="CINNumber"
-                      defaultValue={params.CINNumber}
+                      placeholder="Enter ShortName"
+                      id="ShortName"
+                      name="ShortName"
+                      defaultValue={params.ShortName}
                       onChange={(e) => changeValue(e)}
                       required
                     />
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="modal-footer">
+            </div> */}
+            <div
+              className="modal-footer"
+              style={{ justifyContent: "flex-start" }}>
               <button
                 type="button"
                 className="btn btn-primary"
@@ -360,4 +373,4 @@ const defaultParams = EntityParams;
   );
 };
 
-export default EntityMaster;
+export default CurrencyMaster;

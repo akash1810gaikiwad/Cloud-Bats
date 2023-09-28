@@ -7,13 +7,13 @@ import BlankLayout from "../layouts/BlankLayout";
 
 /* ****Pages***** */
 import Main from "../pages/main";
-import CurrencyMaster from "../pages/CurrencyMaster";
-import EntityMaster from "../pages/EntityMaster";
-import LocationMaster from "../pages/LocationMaster";
+import CurrencyMaster from "../pages/views/AdminView/CurrencyMaster";
+import EntityMaster from "../pages/views/AdminView/EntityMaster";
+import LocationMaster from "../pages/views/AdminView/LocationMaster";
  
-import ChannelMaster from "../pages/ChannelMaster";
+import ChannelMaster from "../pages/views/AdminView/ChannelMaster";
  
-import PlaceMaster from "../pages/PlaceMaster";
+import PlaceMaster from "../pages/views/AdminView/PlaceMaster";
  
 
 /* ****Auth***** */

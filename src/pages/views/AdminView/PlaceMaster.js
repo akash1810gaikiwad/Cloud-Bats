@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { AddEntity, getEntity } from "../Global";
+import { AddEntity, getEntity } from "../../../Global";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-import { showMessage } from "../GlobalFunction";
-import { PlaceParams } from "./model/masters";
+import { showMessage } from "../../../GlobalFunction";
+import { PlaceParams } from "../../model/masters";
 
 const PlaceMaster = () => {
   const [tableData, settableData] = useState([]);
