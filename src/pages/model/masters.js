@@ -7,6 +7,7 @@ const CurrencyParams = {
 };
 
 const ChannelParams = {
+  id: "",
   ChannelCode: "",
   ChannelName: "",
   ShortName: "",
@@ -47,7 +48,10 @@ const PlaceParams = {
   StateCode: "",
 };
 
-
+const DesignationParams = {
+  DesignationCode: "",
+  DesignationName: "",
+  
 const ZoneParams = {
   ZoneCode: "",
   ZoneName: "",
@@ -66,6 +70,7 @@ const DepartmentParams = {
   AddedOn: "",
 };
 
+
 const RegionParams = {
   RegionCode: "",
   RegionName: "",
@@ -78,14 +83,13 @@ const RegionParams = {
 };
 
 
-
 export {
   CurrencyParams,
   EntityParams,
   // PlaceParams
   PlaceParams,
   ChannelParams,
-
+  DesignationParams,
   ZoneParams,
   DepartmentParams,
 
