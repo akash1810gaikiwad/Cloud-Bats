@@ -37,7 +37,6 @@ const PlaceParams = {
   PlaceCode: "",
   PlaceName: "",
   ShortName: "",
-  PlaceTypeCode: "",
   ZoneCode: "",
   IsActive: "",
   AddedBy: "",
@@ -48,10 +47,30 @@ const PlaceParams = {
   StateCode: "",
 };
 
+const ZoneParams = {
+  ZoneCode: "",
+  ZoneName: "",
+  ShortName: "",
+  IsActive: "",
+  AddedBy: "",
+  AddedOn: "",
+};
+
+const DepartmentParams = {
+  DepartmentCode: "",
+  DepartmentName: "",
+  ShortName: "",
+  IsActive: "",
+  AddedBy: "",
+  AddedOn: "",
+};
+
 export {
   CurrencyParams,
   EntityParams,
   // PlaceParams
   PlaceParams,
   ChannelParams,
+  ZoneParams,
+  DepartmentParams,
 };

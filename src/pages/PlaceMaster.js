@@ -245,7 +245,79 @@ const PlaceMaster = () => {
                                 required
                                  />
                             </div> */}
-                  <div class="input-group mb-3">
+
+                <div class="form-holder">
+                    <label class="form-row-inner">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter PlaceName"
+                        id="PlaceName"
+                        name="PlaceName"
+                        defaultValue={params.PlaceName}
+                        onChange={(e) => changeValue(e)}
+                        required
+                      />
+                      {/* <span class="label">PlaceType</span> */}
+                    </label>
+                    <span> </span>
+
+                    <label class="form-row-inner">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter ShortName"
+                        id="ShortName"
+                        name="ShortName"
+                        defaultValue={params.ShortName}
+                        onChange={(e) => changeValue(e)}
+                        required
+                      />
+                      {/* <span class="label">PlaceType</span> */}
+                    </label>
+                    <span> </span>
+                    <label class="form-row-inner">
+                    <div>
+                                    <select class="custom-select custom-select-sm">
+                                        <option>Select Zone</option>
+                                        <option defaultValue="1">NORTH</option>
+                                        <option defaultValue="2">SOUTH</option>    
+                                        <option defaultValue="3">EAST</option>
+                                        <option defaultValue="4">WEST</option>                                     
+                                    </select>
+                                </div>
+                     
+                    </label>
+                    <span> </span>
+
+                    <label class="form-row-inner">
+                    <div>
+                                    <select class="custom-select custom-select-sm">
+                                        <option>Select Country</option>
+                                        <option defaultValue="1">India</option>
+                                        <option defaultValue="2">Nepal</option>                                       
+                                    </select>
+                                </div>
+                     
+                    </label>
+                            <spam> </spam>
+                    <label class="form-row-inner">
+                    <div>
+                                    <select class="custom-select custom-select-sm">
+                                        <option>Select State</option>
+                                        <option defaultValue="1">STate1</option>
+                                        <option defaultValue="2">State2</option>                                       
+                                    </select>
+                                </div>
+                     
+                    </label>
+
+                      <span> </span>
+
+                  </div>
+
+
+                  {/* <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text">PlaceType</span>
                     </div>
@@ -260,6 +332,10 @@ const PlaceMaster = () => {
                       required
                     />
                   </div>
+
+         
+        
+
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text">Country</span>
@@ -270,7 +346,7 @@ const PlaceMaster = () => {
                       placeholder="Select Country"
                       id="PermAddress"
                       name="PermAddress"
-                      defaultValue={params.CurrencyCode}
+                      defaultValue={params.CountryCode}
                       onChange={(e) => changeValue(e)}
                       required
                     />
@@ -334,7 +410,7 @@ const PlaceMaster = () => {
                       onChange={(e) => changeValue(e)}
                       required
                     />
-                  </div>
+                  </div> */}
                   {/* <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text">CINNumber</span>
