@@ -48,10 +48,24 @@ const PlaceParams = {
   StateCode: "",
 };
 
+const RegionParams = {
+  RegionCode: "",
+  RegionName: "",
+  ShortName: "",
+  ZoneCode: "",
+  IsActive: "",
+  AddedBy: "",
+  AddedOn: "",
+   
+};
+
+
 export {
   CurrencyParams,
   EntityParams,
   // PlaceParams
   PlaceParams,
   ChannelParams,
+  RegionParams
 };
+
